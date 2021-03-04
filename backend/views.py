@@ -89,7 +89,6 @@ class AccountDetails(APIView):
     # получить данные
     def get(self, request, *args, **kwargs):
 
-        # return JsonResponse({'Status': True})
         if not request.user.is_authenticated:
             return JsonResponse({'Status': False, 'Error': 'Log in required'}, status=403)
 
