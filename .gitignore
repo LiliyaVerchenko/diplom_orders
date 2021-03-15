@@ -4,4 +4,5 @@ db.sqlite3
 backend/migrations
 backend/tests.py
 **/__pycache__
+/__pycache__
 
