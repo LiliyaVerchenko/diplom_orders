@@ -64,8 +64,8 @@ class User(AbstractUser):
     objects = UserManager()
     USERNAME_FIELD = 'email'
     email = models.EmailField(_('email address'), unique=True)
-    company = models.CharField(verbose_name='Компания', max_length=40, blank=True)
-    position = models.CharField(verbose_name='Должность', max_length=40, blank=True)
+    company = models.CharField(verbose_name='Company', max_length=40, blank=True)
+    position = models.CharField(verbose_name='Post', max_length=40, blank=True)
     username_validator = UnicodeUsernameValidator()
     username = models.CharField(
         _('username'),
@@ -84,14 +84,14 @@ class User(AbstractUser):
             'Unselect this instead of deleting accounts.'
         ),
     )
-    type = models.CharField(verbose_name='Тип пользователя', choices=USER_TYPE_CHOICES, max_length=5, default='buyer')
+    type = models.CharField(verbose_name='User type', choices=USER_TYPE_CHOICES, max_length=5, default='buyer')
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
     class Meta:
-        verbose_name = 'Пользователь'
-        verbose_name_plural = "Список пользователей"
+        verbose_name = 'User'
+        verbose_name_plural = "User list"
         ordering = ('email',)
 
 
@@ -188,21 +188,21 @@ class ProductParameter(models.Model):
 
 
 class Contact(models.Model):
-    user = models.ForeignKey(User, verbose_name='Пользователь',
+    user = models.ForeignKey(User, verbose_name='User',
                              related_name='contacts', blank=True,
                              on_delete=models.CASCADE)
 
-    city = models.CharField(max_length=50, verbose_name='Город')
-    street = models.CharField(max_length=100, verbose_name='Улица')
-    house = models.CharField(max_length=15, verbose_name='Дом', blank=True)
-    structure = models.CharField(max_length=15, verbose_name='Корпус', blank=True)
-    building = models.CharField(max_length=15, verbose_name='Строение', blank=True)
-    apartment = models.CharField(max_length=15, verbose_name='Квартира', blank=True)
-    phone = models.CharField(max_length=20, verbose_name='Телефон')
+    city = models.CharField(max_length=50, verbose_name='City')
+    street = models.CharField(max_length=100, verbose_name='Street')
+    house = models.CharField(max_length=15, verbose_name='House', blank=True)
+    structure = models.CharField(max_length=15, verbose_name='Housing', blank=True)
+    building = models.CharField(max_length=15, verbose_name='Building', blank=True)
+    apartment = models.CharField(max_length=15, verbose_name='Flat', blank=True)
+    phone = models.CharField(max_length=20, verbose_name='Phone')
 
     class Meta:
-        verbose_name = 'Контакты пользователя'
-        verbose_name_plural = "Список контактов пользователя"
+        verbose_name = 'Contact of buyer'
+        verbose_name_plural = "Contact list"
 
     def __str__(self):
         return f'{self.city} {self.street} {self.house}'

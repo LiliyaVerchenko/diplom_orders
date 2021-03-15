@@ -1,8 +1,7 @@
 .idea
 venv
 db.sqlite3
-backend/__pycache__/models.cpython-38.pyc
-backend/__pycache__/urls.cpython-38.pyc
-backend/__pycache__/views.cpythgit statuon-38.pyc
-backend/__pycache__
+backend/migrations
+backend/tests.py
+**/__pycache__
 
